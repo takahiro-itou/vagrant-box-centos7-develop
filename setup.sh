@@ -1,13 +1,17 @@
 #! /bin/bash  -xue
 
-boxFile='centos7-develop.box'
 boxName='centos7-develop'
+box_version='v1.2.0'
+boxFile="centos7-develop.${box_version}.box"
 
 # Account Name of Vagrant Cloud.
 vcUser='takahiro-itou'
 
 # 所定のディレクトリを、仮想マシンへ転送する用意をする
+script_dir="$(dirname "$0")"
+
 project_base_dir=$(readlink -f "${script_dir}/..")
+vagrant_dir="${project_base_dir}/vagrant"
 
 env     \
     COPY_CONFIG_DIR='no'                        \
@@ -16,6 +20,7 @@ env     \
     /bin/bash -xue "${vagrant_dir}/common/setup-userdata.sh"    \
     || exit $?
 
+# 仮想マシンを構築する
 pushd  vagrant
 
 vagrant  destroy -f  || exit $?

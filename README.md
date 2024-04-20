@@ -20,7 +20,7 @@ cd  vagrant-box-centos7-develop
 ### 作成したボックスを登録する。
 
 ```bash
-vagrant box add  --name <yourname>/centos7-develop  centos7-develop.box
+vagrant box add  --name <yourname>/centos7-develop  centos7-develop.v1.2.0.box
 ```
 
 ## 作成済みのボックスをダウンロードして使う

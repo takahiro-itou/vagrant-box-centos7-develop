@@ -1,11 +1,11 @@
 #! /bin/bash  -xue
 
-boxName='centos7-develop'
+box_name='centos7-develop'
 box_version='v1.2.0'
-boxFile="centos7-develop.${box_version}.box"
+box_file="${box_name}.${box_version}.box"
 
 # Account Name of Vagrant Cloud.
-vcUser='takahiro-itou'
+vc_user='takahiro-itou'
 
 # 所定のディレクトリを、仮想マシンへ転送する用意をする
 script_dir="$(dirname "$0")"
@@ -27,7 +27,7 @@ vagrant  destroy -f  || exit $?
 vagrant  up          || exit $?
 vagrant  halt
 
-vagrant  package   --output ../${boxFile}  default
+vagrant  package   --output ../${box_file}  default
 
 popd
 set  +x
@@ -37,5 +37,5 @@ To add package into box list, run:
 _EOF_
 
 cat  << _EOF_
-vagrant  box  add  --name ${vcUser}/${boxName}  ${boxFile}
+vagrant  box  add  --name ${vc_user}/${box_name}  ${box_file}
 _EOF_

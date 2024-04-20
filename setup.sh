@@ -10,7 +10,7 @@ vcUser='takahiro-itou'
 # 所定のディレクトリを、仮想マシンへ転送する用意をする
 script_dir="$(dirname "$0")"
 
-project_base_dir=$(readlink -f "${script_dir}/..")
+project_base_dir=$(readlink -f "${script_dir}")
 vagrant_dir="${project_base_dir}/vagrant"
 
 env     \

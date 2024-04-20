@@ -18,7 +18,12 @@ Vagrant.configure("2") do |config|
       "--paravirtprovider", "kvm",
     ]
   end
+end
 
+# Provisioning(s)
+load  File.expand_path('common/UploadFiles.rb')
+
+Vagrant.configure("2") do |config|
   config.vm.provision("setup-packages", type: "shell",
                       path: "provision/setup-packages.sh",
                       privileged: true)
@@ -29,5 +34,4 @@ Vagrant.configure("2") do |config|
                       path: "provision/cleanup.sh",
                       privileged: true)
   config.vm.synced_folder(".", "/vagrant", disabled: true)
-
 end
